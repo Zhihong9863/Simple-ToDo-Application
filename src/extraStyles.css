@@ -1,0 +1,164 @@
+/* LoginPage Styles */
+.loginPage-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This ensures the children are centered horizontally */
+  justify-content: center; /* This ensures the children are centered vertically */
+  padding: 40px; /* Adjusted padding for better spacing */
+  background-color: rgba(252, 252, 252, 0.8); 
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.15); 
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto; /* Centering the form on the page */
+  height: 240px; /* Ensuring a minimum height so the form appears centered vertically */
+  margin-top: 5rem;
+  margin-bottom: 1px; 
+}
+
+.RegisterPage-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px; /* Increased padding */
+  background-color: rgba(252, 252, 252, 0.8); 
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.15); 
+  position: relative;
+  max-width: 380px; /* Increased max-width */
+  width: 80%; /* If you want it to be 80% of the parent's width, for example */
+  min-height: 280px; /* Added min-height and removed fixed height */
+  margin: 0 auto; 
+  margin-top: 5rem;
+  margin-bottom: 1px; 
+}
+
+.loginPage-input {
+  border: 1px solid #d4d4d4; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: border-color 0.3s, box-shadow 0.3s; 
+  background-color: rgba(252, 252, 252, 0.2);
+  width: 100%; /* Full width for responsiveness */
+  border-radius: 4px; 
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 12px 20px; /* Added more padding for better user experience */
+  margin: 10px 0; /* Increased margin for better spacing */
+  text-align: left; /* Aligning text to the left which is a more natural flow for text input */
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+  border: 1.5px solid #d0d0d0;
+}
+.loginPage-input:focus {
+  border-color: #f5ba13;
+  box-shadow: 0 2px 8px rgba(245,186,19, 0.2); /* On focus, change the shadow color to match the border */
+}
+
+.loginPage-button-container {
+  margin-top: 15px; /* More spacing before the button for better separation */
+  width: 100%; /* Full width for better alignment */
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.loginPage-submitBtn {
+  margin-top: 5px; /* Added margin for spacing above the button */
+  white-space: nowrap;
+  background: #f5ba13;
+  color: #fff;
+  border: none;
+  padding: 10px 24px; 
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, transform 0.2s; 
+  align-self: flex-end; /* Align the button to the end of the flex container */
+  position: relative;
+  bottom: auto;
+  right: auto;
+  display: block;
+  margin: 20px auto 0 auto; 
+  margin-right: 20px;
+  width: 120px;
+}
+
+.loginPage-registerBtn {
+  margin-top: 5px; /* Added margin for spacing above the button */
+  background: #f5ba13;
+  color: #fff;
+  border: none;
+  padding: 10px 24px; 
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, transform 0.2s; 
+  align-self: flex-end; /* Align the button to the end of the flex container */
+  position: relative;
+  bottom: auto;
+  right: auto;
+  display: block;
+  margin: 20px auto 0 auto; 
+  margin-left: 20px;
+  width: 120px;
+}
+
+.loginPage-registerBtn:hover, .loginPage-submitBtn:hover {
+  background-color: #f39c12; /* slightly darker shade on hover */
+  transform: translateY(2px); /* Press-down effect on hover */
+}
+
+.registerPage-submitBtn {
+  margin-top: 5px; /* Added margin for spacing above the button */
+  background: #f5ba13;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, transform 0.2s;
+  align-self: flex-end; /* Align the button to the end of the flex container */
+  position: relative;
+  bottom: auto;
+  right: auto;
+  display: block;
+  margin: 20px auto 0 auto;
+  margin-left: 70px;
+  width: 120px;
+}
+
+/* Optional: You can add hover effect */
+.registerPage-submitBtn:hover {
+  background-color: #e3a010; /* A slightly darker shade of the original color */
+  transform: translateY(-2px);
+}
+
+.registerPage-submitBtn:active {
+  transform: translateY(1px);
+}
+
+.HomePage-logOutBtn {
+  color: #1db6c1;
+  font-family: "McLaren", cursive;
+  font-weight: 100;
+  border: none;
+  padding: 10px 24px; 
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
