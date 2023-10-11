@@ -14,57 +14,32 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Homework discription
 
-### `npm run build`
+## Login page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Regarding the login page, I have implemented a simple database storage. At the beginning of login, if your username or password is empty, you cannot submit the page. However, when you enter them, the user will definitely not exist. Therefore, I have designed a logic that requires you to register first. Only after registering and keeping records in the database can you return to the login page to input personal information.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![1bc4066408bdc879148bca50ab63ab7](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/660eb354-4f2b-4f27-b44b-dc18d1e3bd70)
+![b7556629f7d020b050bbd41a36652a7](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/50d05f52-bd5f-40ca-8991-3122b4b3b7b8)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Registration page
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The registration page is similar to the login page, where you need to fill in information for the username, password, and repeat password fields before submitting the form. The database will store your personal information. Regarding the password, if the two passwords do not match, you will receive a pop-up message asking you to re-enter. Once your user information is registered, the database will have your records, and you can return to the login interface to enter the personal information you just registered.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![1fe3e94378947dd77c69812829aa732](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/ed83c22b-17bd-4449-918f-8ff59aa3db71)
+![5e434c2df3bc0fc64821d9597a1b86f](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/db07744d-e9fe-4547-ae87-98196f73598d)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Homepage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+On the main page, when you log in to the top left corner of the userbar, your name, which is the author's name, will be displayed. The add button only allows you to add a new note when you ensure that the title field has been entered. For each note record, I added two buttons, one for edit and one for delete, and one for checkbox - to check if the event has been completed. You can freely edit and delete notes, and when you check checkbox, you should dynamically see a complete time display. There is a logout button in the upper right corner of the userbar, which will automatically redirect back to the login interface. As long as you have not restarted the project, you should be able to see that all your notes have been saved when logging in again.
 
-## Learn More
+![29c33ae93e143b5cc9ead541610a1ce](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/5ef687a5-02f4-4716-84fc-c82d691b6a68)
+![162d14a89c70deb4d006b69a4c219b6](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/93a215b2-23b2-478e-ac14-c2c970ef9556)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
