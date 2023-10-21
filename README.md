@@ -24,7 +24,8 @@ Regarding the login page, I have implemented a simple database storage. At the b
 ![1bc4066408bdc879148bca50ab63ab7](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/660eb354-4f2b-4f27-b44b-dc18d1e3bd70)
 
 
-![b7556629f7d020b050bbd41a36652a7](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/50d05f52-bd5f-40ca-8991-3122b4b3b7b8)
+![image](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/f047bc89-c00c-4da5-9053-101a2644ad1e)
+
 
 
 ## Registration page
@@ -42,12 +43,23 @@ On the main page, when you log in to the top left corner of the userbar, your na
 
 But I haven't implemented any more features, such as when you register two accounts, one is Albert and the other is Bob. If Albert adds a new note, Bob will also see the same note when logging in.
 
+![image](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/f123e9d3-b5e8-470c-9941-4c9a462ae1b9)
+
+
 ![29c33ae93e143b5cc9ead541610a1ce](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/5ef687a5-02f4-4716-84fc-c82d691b6a68)
 
 
 ![162d14a89c70deb4d006b69a4c219b6](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/93a215b2-23b2-478e-ac14-c2c970ef9556)
 
+## Summary
 
+Use usecontext to control global attributes, along with the hook function userreducer function.
+
+Restructured the project, the directory structure should now be very clear and readable.
+
+Convert the route navigation implementation of the lab2 into the control of component rendering, ensuring the same requirements as the lab3.
+
+Some interesting new functions have been added, converting windows.alert into set error message. At the same time, a simple welcome pop-up window is created through the useEffect function.
 
 
 
