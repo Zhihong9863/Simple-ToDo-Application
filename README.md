@@ -53,7 +53,7 @@ But I haven't implemented any more features, such as when you register two accou
 
 ## Summary
 
-Use usecontext to control global attributes, along with the hook function userreducer function.
+Use useContext to control global attributes, along with the hook function useRreducer function.
 
 Restructured the project, the directory structure should now be very clear and readable.
 
