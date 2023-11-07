@@ -1,0 +1,61 @@
+/** Chinese version for just myself understanding **/
+
+-- App.jsx
+
+dispatch(loginUser(user.name)); 这个代码在loginpage中，注意假设这个函数被调用
+
+首先，从usecontext全局那里拿到state dispatch，然后这个dispatch(setView('homepage'))来源于reducer.jsx
+当调用的时候，会触及这个const [state, dispatch] = useReducer(mainReducer, initialState);也就是会来源于mainreducer
+传入当前的状态和刚才 dispatch 的 action。
+子 reducer 被调用：
+mainReducer 会分别调用 userAndViewReducer、notesReducer，每个子 reducer 都处理它们各自负责的状态部分。
+
+状态被更新：
+userAndViewReducer 可能会返回更新了 user 或 currentView 的状态部分。
+notesReducer 根据 action 和 state.posts 返回更新后的帖子列表。
+
+新的状态对象被组合：
+mainReducer 会将所有子 reducer 返回的结果合并为一个新的状态对象，并将其返回给 React。React 随后会使用这个新状态对象来重新渲染 UI。
+
+
+-- Note.jsx
+
+用户在 Note 组件中触发了一个操作（如编辑、切换完成状态或删除）。
+相应的处理函数（如 handleEdit、handleCheckboxChange 或 handleDelete）被调用。
+这些处理函数执行两个动作：
+调用 dispatch 函数，发送一个 action 到全局的 reducer。
+调用 useResource 钩子返回的函数（如 editTodo、toggleTodo 或 deleteNote），与后端 API 交互，更新或删除数据库中的数据。
+全局的 reducer 接收到 action 并处理它，返回新的全局状态 state。
+当全局状态 state 更新后，React 会重新渲染那些依赖于这些状态的组件，以反映最新的状态。在你的情况下，App 组件接收到新的 notes 状态，并将其传递给 HomePage，
+HomePage 再将每个更新的 note 传递给 Note 组件。
+Note 组件收到新的 props 后也会重新渲染，显示更新后的内容。
+
+
+-- LoginPage.jsx // RegisterPage.jsx
+
+如果你使用了 json-server-auth 这个依赖，那么你的后端会处理用户认证的逻辑。在这种情况下，/login 和 /users 端点会有不同的行为：
+对于 /login 端点，json-server-auth 会根据你发送的 email 和 password 来校验用户是否存在及密码是否正确。
+如果认证成功，它会返回一个包含用户信息和认证令牌（token）的响应。
+如果认证失败，它通常会返回 400 或者其他相关的 HTTP 状态码，表明请求不正确。
+对于 /users 端点，当你使用 POST 方法时，json-server-auth 会尝试创建一个新用户。如果用户的电子邮件已经存在，它会返回一个错误响应，通常是 400 状态码，
+表示请求的数据无效或者用户已经存在。
+因此，当你在前端使用 useResource 钩子发送请求时：
+登录请求（/login）会通过 json-server-auth 进行用户认证。
+注册请求（/users）会尝试在后端创建一个新用户。
+
+
+-- setupProxy.js // index.js
+
+1.前端开发服务器监听 http://localhost:3000。即React 应用在浏览器中通过这个地址访问。(但我们的例子是直接设置baseURL: 'http://localhost:4000')
+    因为后端服务器是在端口4000上运行的
+
+2.当 React 应用需要与后端 API 交互时，会向 /api 路径发起请求。由于已经在 setupProxy.js 中设置了代理
+
+3.所有这些请求都会被转发到 http://localhost:4000。代理服务器将 /api 前缀从路径中移除，因为 json-server 不需要这个前缀。
+
+4.例如，当尝试访问 http://localhost:4000/api/posts，代理将请求转发到 http://localhost:4000/posts。
+
+这里的 /api 是一个约定俗成的路径
+所有通过这个 axios 实例发出的 HTTP 请求都会自动附加这个前缀
+这些请求是应用程序的 API 请求，不是普通的页面请求。
+这有助于在开发服务器上设置代理规则，因为我们可以指定所有匹配 /api 路径的请求都应该被代理到另一个服务（在我们代码中是 json-server）

@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "title": "Understanding useState",
+      "content": "useState is a Hook that lets you add React state to function components.",
+      "createdDate": "6/4/2013, 6:37:13 PM",
+      "isCompleted": true,
+      "completedDate": "11/7/2023, 12:58:51 AM",
+      "userEmail": "zhihong@email.com",
+      "id": 1
+    },
+    {
+      "title": "Studying DevOPs",
+      "content": "docker is an open source platform that enables developers to build, deploy, run, update and manage containers",
+      "createdDate": "11/6/2023, 7:08:07 PM",
+      "isCompleted": true,
+      "completedDate": "11/6/2023, 10:18:00 PM",
+      "userEmail": "zhe17@depaul.edu",
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "email": "zhihong@email.com",
+      "password": "$2a$10$02EWNadOXyQZyb8G92gg3OLvGQAUA1tuIW4Sbu7ZJLS8NaHZZVt7S",
+      "id": 1
+    },
+    {
+      "email": "zhe17@depaul.edu",
+      "password": "$2a$10$TJZCE2t.SjntNwZBQGYY0.xEAMBQ14zfIV6ACUKrfKY8.1Vp/QI1K",
+      "id": 2
+    },
+    {
+      "email": "aaa@gmail.com",
+      "password": "$2a$10$2EMjXAHI3fhpsPz4cfTp6O69wfWzYm3wModbQ86GjQmHylawGKSd6",
+      "id": 3
+    }
+  ]
+}
