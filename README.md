@@ -23,7 +23,7 @@ run npm init, npm install, and npm start, which will run [http://localhost:3000]
 ## db json
 
 On the backend, I have saved three users and their passwords have been encrypted, but you can access them all with passwords of 123456.
-Specifically, for example, for 'Studying DevOPs', the content of this post is only for users "zhe17@depaul.edu" to see
+Specifically, for example, for 'Studying DevOPs', the content of this post is only for users "zhe17@depaul.edu" to see.
 ![image](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/f60e960c-9da9-4d6e-944a-57791c0ad9f0)
 
 
@@ -44,7 +44,7 @@ Specifically, due to the use of the json-server-auth dependency, all user names 
 
 ## Registration page
 
-The same logic as the login interface checks whether the input of the password matches twice. The username registration format must be in email format, whether the password is too short (due to the special dependency of "json server auth dependency"), and if the user is already in the database, it will not be allowed to be registered
+The same logic as the login interface checks whether the input of the password matches twice. The username registration format must be in email format, whether the password is too short (due to the special dependency of "json server auth dependency"), and if the user is already in the database, it will not be allowed to be registered.
 
 ![ff578031737b86c1d79925a405d6715](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/40e2aacb-b206-475c-accf-08cb973cb5eb)
 
@@ -55,11 +55,11 @@ The same logic as the login interface checks whether the input of the password m
 ## Homepage
 
 Implemented functions that Lab3 did not implement. Because of the introduction of backend content:
-1. The initial post content has been created, and the default user can see the post that has been created in the database
+1. The initial post content has been created, and the default user can see the post that has been created in the database.
 2. Every time compile the project, all posts of the user can be saved without being cleared.
-3. Each user can only see their own posts, as described in db.json. "zhe17@depaul.edu": you can only see devops; "zhihong@email.com": only useState can be seen
-4. Each user's actions such as adding, editing, and deleting posts will only affect their own account, as the logic of which user belongs to the post is set (see userEmail in db.json)
-5. Users' addition, deletion, and modification operations will be synchronized to the database in a timely manner
+3. Each user can only see their own posts, as described in db.json. "zhe17@depaul.edu": you can only see devops; "zhihong@email.com": only useState can be seen.
+4. Each user's actions such as adding, editing, and deleting posts will only affect their own account, as the logic of which user belongs to the post is set (see userEmail in db.json).
+5. Users' addition, deletion, and modification operations will be synchronized to the database in a timely manner.
 
 ![cf46fde7083de612a6d021f17311f4b](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/9e1a4e14-914a-4b57-ba9e-c66943b79eb4)
 
@@ -73,8 +73,9 @@ Implemented functions that Lab3 did not implement. Because of the introduction o
 
 ## Back-end Compile Sample
 
-400 bad request: sourced from user registration or login issues (various possible situations mentioned earlier)
-200 success status response: User successfully registered, logged in, added, deleted, modified, and other operations
+1.400 bad request: sourced from user registration or login issues (various possible situations mentioned earlier).
+
+2.200 success status response: User successfully registered, logged in, added, deleted, modified, and other operations.
 
 ![37546367532862ac05535082706f283](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/2984f2c4-b5de-41a1-8321-c755c13367ad)
 
