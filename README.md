@@ -8,14 +8,14 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 
 Two terminals need to be opened, one client and one server
 
-About opening the back-end: cd to the server-express folder 
+About opening the back-end: cd to the server-express folder <br>
 run npm init, npm install, and npm run start, which will run [http://localhost:4000](http://localhost:4000) and start the express server
 
-About opening the front-end: cd to the client folder
+About opening the front-end: cd to the client folder<br>
 run npm init, npm install, and npm start, which will run [http://localhost:3000](http://localhost:3000)
 
 # Homework discription
@@ -28,11 +28,11 @@ For details, please visit setupMongo.js under the server-express folder, as well
 
 This project can access mongo db atlas to perform CRUD operations on the database, or use API platforms such as Postman or Insomnia to build and use APIs.
 
-For sample users
-Respectively
-Username: zhihong@gmail.com Password: 123456
-Username: zhe17@depaul.edu Password: 123456
-Username: albert Password: 123456
+For sample users<br>
+Respectively<br>
+Username: zhihong@gmail.com Password: 123456<br>
+Username: zhe17@depaul.edu Password: 123456<br>
+Username: albert Password: 123456<br>
 
 
 ## Registration page
@@ -62,7 +62,7 @@ If the registration is successful, the ID, username, and access token will be re
 ## Homepage
 
 In addition to testing whether CRUD can work properly on our posts, I also used Postman to test whether the database can function properly. 
-In this update, I have changed the display method of time to ISO, because the default format in the database is that.
+In this update, I have changed the display method of time to ISO, because the default format in the database is that.<br>
 (Note: The deletion operation is not easy to see from the screenshot, and can be tested while running the app on your own)
 
 ### Postman
