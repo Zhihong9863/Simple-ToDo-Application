@@ -62,7 +62,7 @@ If the registration is successful, the ID, username, and access token will be re
 ## Homepage
 
 In addition to testing whether CRUD can work properly on our posts, I also used Postman to test whether the database can function properly. 
-In this update, I have changed the display method of time to ISO, because the default format in the database is that.<br>
+In this update, I have changed the display method of time to ISO, because the default format in the database is that.<br><br>
 (Note: The deletion operation is not easy to see from the screenshot, and can be tested while running the app on your own)
 
 ### Postman
