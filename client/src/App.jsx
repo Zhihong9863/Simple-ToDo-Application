@@ -19,35 +19,6 @@ export const initialState = {
 
 export default function App() {
 
-  //use useResource to get the database embeded array postsp[] data
-  const [postResponse, getPosts] = useResource(() => ({
-    url: "/posts",
-    method: "get",
-  })); 
-  
-  //Requesting posts during component loading
-  //Empty dependency array ensures that it only runs when the component is mounted
-  useEffect(() => {
-    getPosts();
-  }, []);
-  
-  /*
-    UseEffect itself does not directly render any interface, which is a side effect hook used to handle the logic of component loading, updating, and unloading.
-
-    Here it listens for updates to the response. Once there is data, it will call the reducer hook to update our post array. 
-    This post array will be given to the note component in the homepage loop. 
-    Finally, when we log in, we will directly see this data on the homepage interface
-  */
-
-  useEffect(() => {
-    if (postResponse && postResponse.data) {
-      console.log(postResponse.data); 
-      dispatch({ type: "FETCH_POSTS", posts: postResponse.data.reverse() });
-    }
-  }, [postResponse]);
-
-
-
   const mainReducer = (state, action) => {
     const updatedUserAndView = userAndViewReducer(state, action);
     return {
@@ -62,6 +33,28 @@ export default function App() {
 
   //Modal Window Status
   const [showModal, setShowModal] = useState(false);
+
+  //use useResource to get the database embeded array postsp[] data
+  const [postResponse, getPosts] = useResource(() => ({
+    url: "/post",
+    method: "get",
+    headers: { Authorization: `${user?.access_token}` }
+  })); 
+  
+  //If the user logs in, an access token will be generated, and here we listen for the access token. 
+  //When we go to the login interface, we can load all the posts
+  useEffect(() => {
+    getPosts();
+  }, [user?.access_token]);
+  
+  //Once we have data in the postResponse, we will pull out the user's post from the database
+  useEffect(() => {
+    if (postResponse && postResponse.isLoading === false && postResponse.data) {
+      console.log(postResponse.data); 
+      dispatch({ type: "FETCH_POSTS", posts: postResponse.data.reverse() });
+    }
+  }, [postResponse]);
+
 
   //Use useEffect to check for changes in user status
   useEffect(() => {

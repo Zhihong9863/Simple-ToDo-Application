@@ -14,30 +14,40 @@ export default function RegisterPage() {
       repeatPassword: ""
     });
 
-    const [response, register] = useResource((email, password) => ({
-      url: "/users",
+    //1. Create hooks, build front-end and back-end routes, define routes and methods, 
+    //and provide parsers for username, password, and second confirmation password when passed to the backend
+    const [response, register] = useResource((username, password, passwordConfirmation) => ({
+      url: "/auth/register",
       method: "post",
-      data: { email, password },
+      data: { username, password, passwordConfirmation },
     }));
 
-    // Update the application status and use useEffect to respond to the results of registration requests
+    // 3.Obtain the JSON parsing body passed from the backend, obtain the fields in the data, 
+    // either deconstruct the data and pass it to dispatch while saving the global variable state in useContext, or pop up an error message
     useEffect(() => {
-      // check we get error or data
-      if (response && response.error) {
-        // if we encouter error, print it out to the console and alert user
-        console.error(response.error);
-        window.alert(response.error.data);
+      if(response && response.isLoading === false){
+        // check we get error or data
+        if (response.error) {
+          // if we encouter error, print it out to the console and alert user
+          console.error(response.error);
+          if (response.error.data.error.includes('duplicate key error')) {
+            window.alert('This username is already taken');
+          }
+          //Usually is the two password entries do not match
+          else window.alert(response.error.data.error);
 
-      } else if (response && response.data) {
-        // taclke the situation of register successfully
-        console.log("Registered:", response.data);
-        window.alert("sign up successfully!");
-        
-        dispatch(registerUser(response.data.user.email));
-        //By creating a logoutUser action or a similar action, this action will clear the user status.
-        dispatch(logoutUser());
-        dispatch(setView('login'));
+        } else if (response.data) {
+          // taclke the situation of register successfully
+          console.log("Registered:", response.data);
+          window.alert("sign up successfully!");
+          
+          dispatch(registerUser(response.data.username));
+          //By creating a logoutUser action or a similar action, this action will clear the user status.
+          dispatch(logoutUser());
+          dispatch(setView('login'));
+        }
       }
+      
     }, [response, dispatch]);
 
 
@@ -52,20 +62,11 @@ export default function RegisterPage() {
       });
     }
 
-    //Send registration requests to the backend.
-    //Provide feedback to users based on the response.
-    //If registration is successful, update the status of the front-end and navigate to the login page or directly log in to the user
+    //2. Obtain the username and password entered by the user from the input box and pass them to the backend
     function handleRegister(event) {
       event.preventDefault();
 
-      // check whether password is match
-      if (user.password !== user.repeatPassword) {
-          window.alert("The passwords entered twice do not match. Please re-enter!");
-          return;
-      }
-
-      //first make sure password is matched and then call register function to check other situations.
-      register(user.name, user.password);
+      register(user.name, user.password, user.repeatPassword);
     
     }
   
@@ -78,7 +79,7 @@ export default function RegisterPage() {
               onChange={handleChange}
               name="name"
               value={user.name}
-              placeholder="Email"
+              placeholder="Username"
             />
             <input
               className="loginPage-input"

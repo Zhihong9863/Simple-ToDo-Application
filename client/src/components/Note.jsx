@@ -1,8 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useResource } from 'react-request-hook';
+import { StateContext } from "../auxiliary/Context";
 
 
 function Note(props) {
+
+  const { state } = useContext(StateContext);
+  const { user } = state;
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -13,19 +17,22 @@ function Note(props) {
 
   //any operations in our Note.jsx needs to know the exact 'id' in their params, so that's why I need the backend's 'id' when post a new note
   const [deleteResponse, deleteNote] = useResource((id) => ({
-    url: `/posts/${id}`,
-    method: 'delete'
+    url: `/post/${id}`,
+    method: 'delete',
+    headers: { Authorization: `${user.access_token}` }
   }));
 
-  const [toggleResponse, toggleTodo] = useResource(({ id, isCompleted, completedDate }) => ({
-    url: `/posts/${id}`,
+  const [toggleResponse, toggleTodo] = useResource(({ id, isCompleted }) => ({
+    url: `/post/${id}`,
     method: 'patch',
-    data: { isCompleted, completedDate }
+    headers: { Authorization: `${user.access_token}` },
+    data: { isCompleted }
   }));
 
   const [editResponse, editTodo] = useResource(({ id, title, content, createdDate, isCompleted, completedDate }) => ({
-    url: `/posts/${id}`,
+    url: `/post/${id}`,
     method: 'patch',
+    headers: { Authorization: `${user.access_token}` },
     data: { title, content, createdDate, isCompleted, completedDate }
   }));
 
@@ -49,11 +56,13 @@ function Note(props) {
   //and execute these userReducer contents on the front-end after being successfully added to the backend database
   useEffect(() => {
     if(toggleResponse && toggleResponse.data && toggleResponse.isLoading === false) {
-      props.onToggle(toggleResponse.data.id);
+      console.log(toggleResponse.data);
+      // props.onToggle(toggleResponse.data.id);
+      props.onToggle(toggleResponse.data);
     }
     else if (toggleResponse && toggleResponse.error) {
       console.error(toggleResponse.error);
-      window.alert(toggleResponse.data);
+      window.alert(toggleResponse.error.data);
     }
   }, [toggleResponse]);
 
@@ -75,7 +84,7 @@ function Note(props) {
   will switch the status of isEditing.
   */
   function handleEdit() {
-    console.log(props.id);
+
     if (isEditing) {
 
         editTodo({
@@ -104,15 +113,13 @@ function Note(props) {
     console.log(props.id);
 
     const newIsCompleted = !props.isCompleted;
-    const newCompletedDate = newIsCompleted ? new Date().toLocaleString() : null;
 
     toggleTodo({
       id: props.id,
-      isCompleted: newIsCompleted,
-      completedDate: newCompletedDate
+      isCompleted: newIsCompleted
     });
 
-    // props.onToggle(props.id);
+
   }
 
 
@@ -126,16 +133,7 @@ function Note(props) {
       };
     });
   }
-
-
-  /**
-   * HandleEdit is a switching function that determines whether to save notes or switch to editing mode based on the current state 
-   * of isEditing. When the state of the React component (in this case isEditing) changes, the component will be re rendered. 
-   * Therefore, when the handleEdit function is called and the value of isEditing is changed, it will cause the component to re render. 
-   * That is, re-entering the return section
-   */
-
-  
+ 
   return (
     <div className="note">
         {isEditing ? (

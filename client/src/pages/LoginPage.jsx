@@ -15,28 +15,34 @@ export default function LoginPage() {
 
     const [errorMsg, setErrorMsg] = useState("");
 
-    //Because we use json server auth, it will verify the existence of the user and the correctness of the password based on the email and password you send. 
-    //If the authentication is successful, it will return a response containing user information and an authentication token.
-    const [response, login] = useResource((email, password) => ({
-      url: "/login",
+    //1. Create hooks, build front-end and back-end routes, define routes and methods, 
+    //and provide parsers for username, password, when passed to the backend
+    const [response, login] = useResource((username, password) => ({
+      url: "/auth/login",
       method: "post",
-      data: { email, password },
+      data: { username, password },
     }));
 
+    // 3.Obtain the JSON parsing body passed from the backend, obtain the fields in the data, 
+    // either deconstruct the data and pass it to dispatch while saving the global variable state in useContext, or pop up an error message
     useEffect(() => {
-      // check we get error or data
-      if (response && response.error) {
-        // if we encouter error, print it out to the console and alert user
-        console.error(response.error);
-        setErrorMsg(response.error.data);
+      if(response && response.isLoading === false){
+        // check we get error or data
+        if (response.error) {
+          // if we encouter error, print it out to the console and alert user
+          console.error(response.error);
+          setErrorMsg(response.error.data.error + ' Please check your username and password and try again.');
 
-      } else if (response && response.data) {
-        // taclke the situation of register successfully
-        console.log("Login:", response.data);
-        dispatch(loginUser(response.data.user.email));
-        dispatch(setView('homepage'));
+        } else if (response && response.data) {
+          // taclke the situation of register successfully
+          console.log("Login:", response.data);
+          const { username, access_token } = response.data;
+          //The access token generated and passed from the backend is then passed to the dispatch to store our access_ token, 
+          //so that after logging in, we can use this request header for verification to perform post operations
+          dispatch(loginUser(username, access_token));
+          dispatch(setView('homepage'));
+        }
       }
-
     }, [response, dispatch])
 
 
@@ -51,10 +57,10 @@ export default function LoginPage() {
       });
     }
 
+    //2. Obtain the username and password entered by the user from the input box and pass them to the backend
     function handleLogin(event) {
       event.preventDefault();
 
-      //once finished, response will have data(response.data) and it will go to useEffect
       login(user.name, user.password);
     }
 
@@ -74,7 +80,7 @@ export default function LoginPage() {
               onChange={handleChange}
               name="name"
               value={user.name}
-              placeholder="Email"
+              placeholder="Username"
             />
             <input
               className="loginPage-input"

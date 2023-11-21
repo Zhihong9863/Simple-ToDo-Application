@@ -9,10 +9,11 @@ export const registerUser = (username) => ({
     user: username
 });
 
-export const loginUser = (username) => ({
+export const loginUser = (username, access_token) => ({
     type: 'LOGIN',
     user: {
-        name: username
+        name: username,
+        access_token: access_token,
     } 
   });
   
@@ -35,8 +36,14 @@ export const editNote = attributes => ({
     noteItem: attributes
 });
 
-export const toggleNote = id => ({
+export const toggleNote = attributes => ({
     type: 'TOGGLE_NOTE',
-    id: id
+    noteItem: attributes
 });
+
+// export const toggleNote = (id) => ({
+//     type: 'TOGGLE_NOTE',
+//     id: id,
+// });
+
 

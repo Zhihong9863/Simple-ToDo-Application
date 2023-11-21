@@ -11,15 +11,18 @@ function CreateArea(props) {
     title: "",
     content: ""
   });
-
-  const [post, createPost] = useResource(({ title, content, createdDate, isCompleted, completedDate, userEmail }) => ({
-    url: "/posts",
+  
+  //1. Create hooks, build front-end and back-end routes, define routes and methods, 
+  //and provide parsers for post data, when passed to the backend, remember we need to pass the authorization header
+  const [post, createPost] = useResource(({ title, content, createdDate, isCompleted, completedDate}) => ({
+    url: "/post",
     method: "post",
-    data: { title, content, createdDate, isCompleted, completedDate, userEmail },
+    headers: { Authorization: `${user.access_token}` },
+    data: { title, content, createdDate, isCompleted, completedDate }
   }));
 
   /*
-  The post.isLoading here is an important code. If false, it means that the request has been completed and data is available.
+  3. The post.isLoading here is an important code. If false, it means that the request has been completed and data is available.
 
   This can prevent calling props.onAdd before the data is ready (ensuring that our request has been completed) and also prevent duplicate rendering,
   
@@ -30,6 +33,7 @@ function CreateArea(props) {
   useEffect(() => {
     if (post && post.data && post.isLoading === false) {
       console.log(post.data);
+      //it comes from the back-end, and posts[] will have id that froms database now 
       onAdd(post.data);
       setNote({
         title: "",
@@ -60,10 +64,9 @@ function CreateArea(props) {
       createdDate: new Date().toLocaleString(),
       isCompleted: false,
       completedDate: null,
-      //used to confirm which user this post belongs to, like "userEmail": "zhihong@email.com"
-      userEmail: user.name
     };
   
+    //2.Obtain the newnote entered by the user from the input box and pass them to the backend
    createPost(newNote); 
       
   }
