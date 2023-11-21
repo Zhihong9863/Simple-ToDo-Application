@@ -65,14 +65,14 @@ In addition to testing whether CRUD can work properly on our posts, I also used 
 In this update, I have changed the display method of time to ISO, because the default format in the database is that.
 (Note: The deletion operation is not easy to see from the screenshot, and can be tested while running the app on your own)
 
-# Postman
+### Postman
 ![8f70bb90066871b10c51513b46fb543](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/9fd06742-5ef1-471c-ad6c-96c03fb43a55)
 
 ![9fe622866e92a5455e735f445bf4a2d](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/083e3636-0148-44ad-a0e9-c24b23602d54)
 
 ![2c210a0ee8acbdda7e6de95f6b7cac5](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/b976ac8c-e652-4d39-b70f-eb4fefd41a5f)
 
-# To do App
+### To do App
 ![20dcbc12e85510fce609d1d2d6e4056](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/11cf70da-5c9e-42cd-b218-276d388d2235)
 
 ![083d488594ffc978bfe1597e58613af](https://github.com/Zhihong9863/CSC436-Web-Application/assets/129224800/ffb747d8-f0cf-48e3-a7d0-2120b436c61a)
